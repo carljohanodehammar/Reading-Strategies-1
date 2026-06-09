@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reading Strategies, Pathway Programmes, Jönköping University</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple:#961B81;
+    --purple-deep:#6B1260;
+    --purple-tint:#F9F0F7;
+    --ink:#333333;
+    --grey:#888888;
+    --line:#E4E4E4;
+    --bg:#FFFFFF;
+    --soft:#FAFAFA;
+    --pre:#FFEEDD;
+    --post:#DCEEF9;
+    --head:#961B81;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:"Source Serif 4",Georgia,serif;font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:var(--purple);text-decoration:none;border-bottom:1px solid var(--purple)}
+  a:hover{color:var(--purple-deep);border-bottom-color:var(--purple-deep)}
+  .wrap{max-width:880px;margin:0 auto;padding:0 28px}
+  .eyebrow{font-family:"DM Sans",system-ui,sans-serif;font-size:13px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--grey)}
+  h1,h2,h3{font-family:"Playfair Display",Georgia,serif;color:var(--ink);font-weight:700;line-height:1.15}
+  h1{font-size:clamp(40px,6vw,72px);margin:0 0 24px;letter-spacing:-0.01em}
+  h2{font-size:clamp(26px,3.4vw,36px);margin:0 0 14px}
+  h3{font-size:20px;font-weight:600;margin:0 0 8px;font-family:"DM Sans",system-ui,sans-serif;letter-spacing:0.01em}
+  p{margin:0 0 14px}
+  .lead{font-size:21px;line-height:1.5;color:var(--ink)}
+  .small{font-family:"DM Sans",system-ui,sans-serif;font-size:14px;color:var(--grey)}
+  /* hero */
+  .hero{padding:88px 0 56px;border-bottom:1px solid var(--line)}
+  .hero h1 em{font-style:italic;color:var(--purple);font-weight:500}
+  .hero .sub{font-size:21px;color:var(--ink);max-width:640px;line-height:1.5}
+  .duel{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:48px 0 8px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .duel > div{padding:28px 24px 28px 0}
+  .duel > div + div{padding:28px 0 28px 24px;border-left:1px solid var(--line)}
+  .duel .label{font-family:"DM Sans",system-ui,sans-serif;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--grey);margin-bottom:8px}
+  .duel .quote{font-family:"Playfair Display",Georgia,serif;font-size:22px;line-height:1.3;font-style:italic}
+  .duel .you{color:var(--purple);font-weight:700;font-style:normal}
+  .duel .them{color:#B8B8B8}
+  /* section */
+  section{padding:64px 0;border-bottom:1px solid var(--line)}
+  section:last-of-type{border-bottom:0}
+  .num{font-family:"DM Sans",system-ui,sans-serif;font-size:13px;letter-spacing:0.18em;color:var(--purple);font-weight:500;text-transform:uppercase;margin-bottom:18px}
+  /* cards / lists */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:18px}
+  @media(max-width:680px){.grid2{grid-template-columns:1fr}}
+  .card{background:var(--soft);border-left:3px solid var(--purple);padding:18px 20px 16px;border-radius:0 6px 6px 0}
+  .card h3{color:var(--purple-deep);margin-bottom:6px}
+  .card p{margin:0;font-size:16.5px;line-height:1.5}
+  /* method steps */
+  ol.steps{counter-reset:step;list-style:none;padding:0;margin:24px 0 0}
+  ol.steps li{counter-increment:step;padding:18px 0 22px;border-top:1px solid var(--line);display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start}
+  ol.steps li:last-child{border-bottom:1px solid var(--line)}
+  ol.steps li::before{content:counter(step,decimal-leading-zero);font-family:"Playfair Display",serif;font-size:34px;color:var(--purple);font-weight:500;font-style:italic;line-height:1;grid-row:1 / span 2}
+  ol.steps h3{margin:0 0 4px;font-size:19px;font-family:"DM Sans",system-ui,sans-serif;font-weight:700;color:var(--ink)}
+  ol.steps p{margin:0;font-size:16.5px}
+  /* parser */
+  .parser{margin-top:22px;background:var(--soft);padding:24px;border-radius:6px;border:1px solid var(--line)}
+  .parser .sent{font-family:"Source Serif 4",Georgia,serif;font-size:21px;line-height:1.65;margin-bottom:14px}
+  .parser .sent .head{background:var(--purple);color:#fff;padding:2px 5px;border-radius:3px;font-weight:600}
+  .parser .sent .pre{background:var(--pre);padding:2px 4px;border-radius:3px}
+  .parser .sent .post{background:var(--post);padding:2px 4px;border-radius:3px}
+  .parser .sent .hedge{background:#FFE6F0;padding:2px 4px;border-radius:3px;border-bottom:1px dotted var(--purple)}
+  .parser .sent .modal{background:#FFE6F0;padding:2px 4px;border-radius:3px;font-weight:600}
+  .legend{display:flex;flex-wrap:wrap;gap:14px;font-family:"DM Sans",system-ui,sans-serif;font-size:13px;color:var(--ink);margin-top:8px}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .legend i{display:inline-block;width:14px;height:14px;border-radius:3px;background:#ddd}
+  .legend i.h{background:var(--purple)}
+  .legend i.p{background:var(--pre)}
+  .legend i.q{background:var(--post)}
+  .legend i.m{background:#FFE6F0;border:1px solid var(--purple)}
+  .ctrl{margin-top:14px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  button.btn{font-family:"DM Sans",system-ui,sans-serif;font-size:14px;font-weight:500;letter-spacing:0.04em;background:var(--purple);color:#fff;border:0;padding:10px 16px;border-radius:4px;cursor:pointer;transition:background 0.15s}
+  button.btn:hover{background:var(--purple-deep)}
+  button.btn.ghost{background:transparent;color:var(--purple);border:1px solid var(--purple)}
+  button.btn.ghost:hover{background:var(--purple-tint);color:var(--purple-deep)}
+  .pager{font-family:"DM Sans",system-ui,sans-serif;font-size:13px;color:var(--grey);margin-left:8px}
+  .gloss{margin-top:18px;background:#fff;border:1px solid var(--line);padding:16px 18px;border-radius:4px;font-size:16px}
+  .gloss h4{margin:0 0 8px;font-family:"DM Sans",system-ui,sans-serif;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:var(--purple);font-weight:600}
+  .gloss p{margin:0 0 6px;font-size:15.5px;line-height:1.5}
+  .gloss p:last-child{margin:0}
+  /* vocab */
+  .vocab{margin-top:22px}
+  .vocab .item{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:22px 24px;margin-bottom:18px}
+  .vocab .sent{font-size:19px;line-height:1.55;margin-bottom:12px}
+  .vocab .sent .target{color:var(--purple);font-weight:600;border-bottom:2px solid var(--purple);padding-bottom:1px}
+  .vocab .qtext{font-family:"DM Sans",system-ui,sans-serif;font-size:14px;color:var(--ink);margin-bottom:10px;font-weight:500}
+  .vocab .opt{display:block;width:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:4px;padding:11px 14px;margin-bottom:8px;font-family:"DM Sans",system-ui,sans-serif;font-size:14.5px;color:var(--ink);cursor:pointer;transition:all 0.15s}
+  .vocab .opt:hover{border-color:var(--purple);background:var(--purple-tint)}
+  .vocab .opt.correct{border-color:#1F8A4A;background:#E8F5EE;color:#0F5C2E}
+  .vocab .opt.wrong{border-color:#B83232;background:#FBE9E9;color:#7A1F1F}
+  .vocab .opt.disabled{cursor:default;opacity:0.55}
+  .vocab .opt.disabled:hover{border-color:var(--line);background:#fff}
+  .vocab .fb{margin-top:10px;font-size:14.5px;font-family:"DM Sans",system-ui,sans-serif;color:var(--ink);background:#fff;border-left:3px solid var(--purple);padding:10px 14px;border-radius:0 4px 4px 0}
+  /* sort */
+  .sort{margin-top:22px}
+  .sort .pool{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;min-height:46px;padding:14px;background:var(--soft);border:1px dashed var(--line);border-radius:6px}
+  .sort .pool:empty::before{content:"All strategies placed. Scroll down to check your sort.";font-family:"DM Sans",system-ui,sans-serif;font-size:13px;color:var(--grey)}
+  .sort .chip{font-family:"DM Sans",system-ui,sans-serif;font-size:14px;background:#fff;border:1px solid var(--line);padding:8px 12px;border-radius:20px;cursor:default;color:var(--ink);display:inline-flex;gap:8px;align-items:center}
+  .sort .chip .acts{display:inline-flex;gap:4px}
+  .sort .chip button{font-family:"DM Sans",system-ui,sans-serif;font-size:11.5px;font-weight:500;letter-spacing:0.04em;background:#fff;color:var(--purple);border:1px solid var(--purple);padding:3px 9px;border-radius:12px;cursor:pointer}
+  .sort .chip button:hover{background:var(--purple);color:#fff}
+  .sort .cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:680px){.sort .cols{grid-template-columns:1fr}}
+  .sort .col{background:#fff;border:1px solid var(--line);border-radius:6px;padding:16px 16px 14px;min-height:160px}
+  .sort .col h4{margin:0 0 6px;font-family:"DM Sans",system-ui,sans-serif;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:var(--purple);font-weight:600}
+  .sort .col p.hint{font-family:"DM Sans",system-ui,sans-serif;font-size:12.5px;color:var(--grey);margin:0 0 14px}
+  .sort .placed{display:flex;flex-direction:column;gap:8px}
+  .sort .placed .row{display:flex;gap:8px;align-items:center;background:var(--soft);border-left:3px solid var(--purple);padding:9px 11px;border-radius:0 4px 4px 0;font-family:"DM Sans",system-ui,sans-serif;font-size:13.5px}
+  .sort .placed .row.ok{border-left-color:#1F8A4A;background:#EEF7F1}
+  .sort .placed .row.no{border-left-color:#B83232;background:#FBE9E9}
+  .sort .placed .row .why{font-size:12px;color:var(--ink);opacity:0.8;display:block;margin-top:2px;font-weight:400}
+  .sort .placed .row .return{font-family:"DM Sans",system-ui,sans-serif;font-size:11px;color:var(--purple);background:none;border:0;cursor:pointer;margin-left:auto;text-decoration:underline}
+  .sort .result{margin-top:18px;padding:14px 18px;background:var(--purple-tint);border-left:3px solid var(--purple);font-family:"DM Sans",system-ui,sans-serif;font-size:14.5px;color:var(--purple-deep);border-radius:0 4px 4px 0}
+  /* digital */
+  ul.bullets{padding-left:1.1em;margin:14px 0 0}
+  ul.bullets li{margin-bottom:8px;font-size:16.5px;line-height:1.5}
+  /* closing */
+  .closing{padding:60px 0 84px;border-top:3px solid var(--purple)}
+  .closing p{font-size:18px;max-width:660px}
+  .footnote{margin-top:32px;padding-top:16px;border-top:1px solid var(--line);font-family:"DM Sans",system-ui,sans-serif;font-size:12.5px;color:var(--grey);letter-spacing:0.02em}
+  ::selection{background:var(--purple-tint);color:var(--purple-deep)}
+  :focus-visible{outline:2px solid var(--purple);outline-offset:2px;border-radius:2px}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone@7/babel.min.js"></script>
+
+<script type="text/babel">
+const {useState} = React;
+
+// ---------- PARSER DATA ----------
+const sentences = [
+  {
+    label: "Long noun phrase",
+    plain: "The well-documented decline in academic performance among first-year students who report consistent sleep loss has prompted renewed interest in campus sleep-hygiene programmes.",
+    parts: [
+      {t:"The ", k:""},
+      {t:"well-documented", k:"pre", note:"Pre-modifier, telling us what kind of decline"},
+      {t:" ", k:""},
+      {t:"decline", k:"head", note:"Head noun. This is what the sentence is about."},
+      {t:" ", k:""},
+      {t:"in academic performance among first-year students who report consistent sleep loss", k:"post", note:"Post-modifier, telling us where the decline happens and to whom"},
+      {t:" ", k:""},
+      {t:"has prompted renewed interest in campus sleep-hygiene programmes.", k:""}
+    ],
+    teach: [
+      ["Find the head noun first.", "Strip the modifiers and the sentence is: 'The decline has prompted renewed interest.' That is the spine. Everything else describes the decline."],
+      ["Modifiers stack in two directions.", "Pre-modifiers sit before the head noun. Post-modifiers sit after it and can be very long, even a full clause beginning with 'who' or 'that' or 'in.'"],
+      ["Why this matters at B2 to C1.", "Academic English packs a lot into a single noun phrase. If you read left to right looking for a verb, you can lose the sentence. Find the head noun and the modifiers fall into place."]
+    ]
+  },
+  {
+    label: "Long noun phrase, with embedded clause",
+    plain: "Recent claims about the impact of generative AI tools on student writing have not yet been supported by the kind of long-term, peer-reviewed evidence that educators would normally expect before changing assessment practice.",
+    parts: [
+      {t:"Recent ", k:"pre", note:"Pre-modifier on the first head noun"},
+      {t:"claims", k:"head", note:"First head noun"},
+      {t:" ", k:""},
+      {t:"about the impact of generative AI tools on student writing", k:"post", note:"Post-modifier on 'claims'"},
+      {t:" ", k:""},
+      {t:"have not yet been supported by ", k:""},
+      {t:"the kind of long-term, peer-reviewed", k:"pre", note:"Pre-modifier on the second head noun"},
+      {t:" ", k:""},
+      {t:"evidence", k:"head", note:"Second head noun"},
+      {t:" ", k:""},
+      {t:"that educators would normally expect before changing assessment practice", k:"post", note:"Relative clause, post-modifying 'evidence'"},
+      {t:".", k:""}
+    ],
+    teach: [
+      ["A sentence can have several heads.", "This one has two main noun phrases: 'claims' and 'evidence.' Both have their own modifiers. Find each head and its scope."],
+      ["Relative clauses are post-modifiers in disguise.", "'that educators would normally expect…' looks like a separate sentence, but it is part of the noun phrase. It tells you which kind of evidence."],
+      ["Reading aim.", "Once you can say what 'claims' are about and what 'evidence' is missing, you have the whole sentence."]
+    ]
+  },
+  {
+    label: "Verb phrase and hedging",
+    plain: "These findings suggest that students who space their practice over several weeks may retain information for longer, although the size of the effect appears to depend on the type of material being learned.",
+    parts: [
+      {t:"These findings ", k:""},
+      {t:"suggest", k:"hedge", note:"Hedge verb. The author is reporting evidence, not claiming proof."},
+      {t:" that students who space their practice over several weeks ", k:""},
+      {t:"may", k:"modal", note:"Modal verb. Indicates possibility, not certainty."},
+      {t:" retain information for longer, although the size of the effect ", k:""},
+      {t:"appears to", k:"hedge", note:"Hedge phrase. Softens the claim."},
+      {t:" depend on the type of material being learned.", k:""}
+    ],
+    teach: [
+      ["Hedging is meaning, not weakness.", "Words like 'suggest,' 'may,' 'appears to,' 'tends to,' 'in some cases' tell you exactly how strongly the author commits. Read them as part of the claim."],
+      ["Test for the claim's strength.", "Take out the hedges and the sentence says 'students retain information for longer.' That is a much stronger claim than the original. The original is more honest about uncertainty."],
+      ["Position is in the verbs.", "A confident author writes 'shows,' 'demonstrates,' 'proves.' A cautious author writes 'suggests,' 'indicates,' 'may.' That choice is the author's position."]
+    ]
+  }
+];
+
+function Parser(){
+  const [i,setI] = useState(0);
+  const [shown,setShown] = useState(false);
+  const s = sentences[i];
+  const next = () => { setI((i+1)%sentences.length); setShown(false); };
+  return (
+    <div className="parser">
+      <div className="small" style={{color:"var(--purple)",marginBottom:8,letterSpacing:"0.12em",textTransform:"uppercase",fontWeight:500}}>{s.label}</div>
+      <div className="sent">
+        {shown
+          ? s.parts.map((p,idx) => p.k ? <span key={idx} className={p.k} title={p.note||""}>{p.t}</span> : <span key={idx}>{p.t}</span>)
+          : s.plain}
+      </div>
+      <div className="ctrl">
+        <button className="btn" onClick={()=>setShown(!shown)}>{shown ? "Hide structure" : "Show structure"}</button>
+        <button className="btn ghost" onClick={next}>Next sentence</button>
+        <span className="pager">{i+1} of {sentences.length}</span>
+      </div>
+      {shown && (
+        <div className="legend">
+          {s.parts.some(p=>p.k==="head") && <span><i className="h"></i>Head noun</span>}
+          {s.parts.some(p=>p.k==="pre") && <span><i className="p"></i>Pre-modifier</span>}
+          {s.parts.some(p=>p.k==="post") && <span><i className="q"></i>Post-modifier</span>}
+          {(s.parts.some(p=>p.k==="hedge")||s.parts.some(p=>p.k==="modal")) && <span><i className="m"></i>Hedge or modal</span>}
+        </div>
+      )}
+      {shown && (
+        <div className="gloss">
+          <h4>What this teaches</h4>
+          {s.teach.map(([h,b],k)=>(
+            <p key={k}><strong style={{color:"var(--purple-deep)"}}>{h}</strong> {b}</p>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ---------- VOCAB ----------
+const vocabItems = [
+  {
+    sent: ["The researchers found a consistent association between sleep duration and grades, although the relationship was not ", "deterministic", ", with several high-performing students reporting short sleep."],
+    target: "deterministic",
+    options: [
+      {t:"Absolute, with no exceptions", ok:true, why:"The clue 'although' signals a contrast. The relationship has exceptions, so 'not deterministic' must mean 'not absolute.'"},
+      {t:"Random and unpredictable", ok:false, why:"A consistent association is not random. If you read only the word, this guess is tempting, but the surrounding clause rules it out."},
+      {t:"Recent and provisional", ok:false, why:"There is no clue in the sentence about timing or how provisional the finding is. This guess ignores the context."}
+    ]
+  },
+  {
+    sent: ["The intervention produced ", "modest", " gains in retention, smaller than the authors had predicted but still statistically significant."],
+    target: "modest",
+    options: [
+      {t:"Small but real", ok:true, why:"'Smaller than… predicted' and 'still… significant' tell you the gains are not large but they are real. That is what 'modest' means here."},
+      {t:"Very large and dramatic", ok:false, why:"The sentence explicitly says smaller than predicted. A dramatic effect would contradict the rest of the clause."},
+      {t:"Polite and reserved", ok:false, why:"'Modest' can mean polite in everyday English, but a result is not a person. Let the context choose the academic meaning."}
+    ]
+  },
+  {
+    sent: ["The findings ", "corroborate", " earlier work by Newton and colleagues, who reached similar conclusions using a different sample."],
+    target: "corroborate",
+    options: [
+      {t:"Support and confirm", ok:true, why:"'Reached similar conclusions' is the clue. When new findings agree with earlier work, they corroborate it."},
+      {t:"Contradict and overturn", ok:false, why:"If the conclusions were the same, the new work could not be overturning the old."},
+      {t:"Replace and update", ok:false, why:"Replacing implies the old work is wrong. The sentence describes agreement, not replacement."}
+    ]
+  }
+];
+
+function Vocab(){
+  const [picks,setPicks] = useState({});
+  return (
+    <div className="vocab">
+      {vocabItems.map((it,i)=>{
+        const choice = picks[i];
+        return (
+          <div className="item" key={i}>
+            <div className="sent">
+              {it.sent.map((seg,k)=> seg===it.target
+                ? <span key={k} className="target">{seg}</span>
+                : <span key={k}>{seg}</span>
+              )}
+            </div>
+            <div className="qtext">In this sentence, what does <em>{it.target}</em> most likely mean?</div>
+            {it.options.map((o,k)=>{
+              const picked = choice !== undefined;
+              const cls = picked ? (k===choice ? (o.ok ? "opt correct" : "opt wrong") : "opt disabled") : "opt";
+              return (
+                <button key={k} className={cls} disabled={picked} onClick={()=>setPicks({...picks,[i]:k})}>
+                  {o.t}
+                </button>
+              );
+            })}
+            {choice !== undefined && (
+              <div className="fb">{it.options[choice].why}</div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+// ---------- SORT ----------
+const sortItems = [
+  {id:"a", t:"Highlight almost everything as you read", ok:"no", why:"If everything is highlighted, nothing stands out. Highlighting only the central claim and the key evidence forces you to decide what matters."},
+  {id:"b", t:"Read the abstract and conclusion before the body", ok:"ok", why:"Previewing the argument first gives you a map. You then read the body knowing where it is going."},
+  {id:"c", t:"Look up every unfamiliar word in a dictionary", ok:"no", why:"This breaks your reading rhythm and rarely improves comprehension. Use context first, and look up only the words that block the meaning."},
+  {id:"d", t:"Paraphrase each section in one sentence in your own words", ok:"ok", why:"Paraphrasing is the truest test of understanding. If you cannot rewrite the section in plain language, you have not understood it."},
+  {id:"e", t:"Find the head noun first in a long noun phrase", ok:"ok", why:"Academic sentences pack many ideas into one noun phrase. Finding the head noun gives you the spine of the sentence."},
+  {id:"f", t:"Scan for keywords and skip the surrounding text", ok:"no", why:"This is a test-taking move. It can answer a question quickly but it does not build understanding. Outside a timed test, it leaves you with no grasp of the argument."},
+  {id:"g", t:"Re-read the whole article without doing anything new", ok:"no", why:"Re-reading feels like studying, but the second pass adds little without active thinking. Annotate, paraphrase, or question the text instead."},
+  {id:"h", t:"Notice hedging words like 'suggests,' 'may,' 'appears to'", ok:"ok", why:"Hedges tell you exactly how strongly the author commits. Reading past them flattens a careful argument into a bold claim it never made."},
+  {id:"i", t:"Translate sentences word-by-word from your first language", ok:"no", why:"Academic English does not map word-by-word onto other languages. This method usually breaks long noun phrases and verb phrases and produces an inaccurate reading."},
+  {id:"j", t:"Ask the author one question at the end of each section", ok:"ok", why:"Asking 'why does the author claim this here?' or 'what is missing?' turns reading into thinking. It is the single best habit for critical reading."}
+];
+
+function Sort(){
+  const [placed,setPlaced] = useState({}); // id -> "ok"|"no"
+  const pool = sortItems.filter(it=>!placed[it.id]);
+  const done = pool.length === 0;
+  const counts = {ok:0,no:0,right:0,wrong:0};
+  sortItems.forEach(it=>{
+    if(placed[it.id]){
+      counts[placed[it.id]]++;
+      if(placed[it.id]===it.ok) counts.right++;
+      else counts.wrong++;
+    }
+  });
+  const place = (id,where) => setPlaced({...placed,[id]:where});
+  const returnItem = (id) => { const c = {...placed}; delete c[id]; setPlaced(c); };
+  const okItems = sortItems.filter(it=>placed[it.id]==="ok");
+  const noItems = sortItems.filter(it=>placed[it.id]==="no");
+  return (
+    <div className="sort">
+      <div className="pool" aria-label="Strategies to sort">
+        {pool.map(it=>(
+          <span key={it.id} className="chip">
+            {it.t}
+            <span className="acts">
+              <button onClick={()=>place(it.id,"ok")}>Builds understanding</button>
+              <button onClick={()=>place(it.id,"no")}>Test technique only</button>
+            </span>
+          </span>
+        ))}
+      </div>
+      <div className="cols">
+        <div className="col">
+          <h4>Builds understanding</h4>
+          <p className="hint">Habits that produce real learning and transfer to your degree.</p>
+          <div className="placed">
+            {okItems.map(it=>{
+              const ok = placed[it.id]===it.ok;
+              return (
+                <div key={it.id} className={"row " + (done ? (ok?"ok":"no") : "")}>
+                  <div>
+                    {it.t}
+                    {done && <span className="why">{it.why}</span>}
+                    {!done && <button className="return" onClick={()=>returnItem(it.id)}>Undo</button>}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        <div className="col">
+          <h4>Test technique only</h4>
+          <p className="hint">Useful in a timed multiple-choice test, but does not build learning.</p>
+          <div className="placed">
+            {noItems.map(it=>{
+              const ok = placed[it.id]===it.ok;
+              return (
+                <div key={it.id} className={"row " + (done ? (ok?"ok":"no") : "")}>
+                  <div>
+                    {it.t}
+                    {done && <span className="why">{it.why}</span>}
+                    {!done && <button className="return" onClick={()=>returnItem(it.id)}>Undo</button>}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+      {done && (
+        <div className="result">
+          You placed {counts.right} of {sortItems.length} correctly. The colour on each row shows whether the strategy was in the right column. The reason is below each item, so you can read through the ones you placed elsewhere and see why.
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ---------- APP ----------
+function App(){
+  return (
+    <div>
+      <header className="hero">
+        <div className="wrap">
+          <div className="eyebrow">Pathway Programmes / Reading strategies</div>
+          <h1>Read to <em>learn</em>, not to finish.</h1>
+          <p className="sub">Academic articles reward slow, active reading. The strategies that get you through a standardised test will fail you here. The strategies that work here will keep working for the rest of your degree.</p>
+          <div className="duel">
+            <div>
+              <div className="label">For your degree</div>
+              <div className="quote you">Find the position, the audience, the purpose, and the conclusion. Argue with the author, in writing, in the margin.</div>
+            </div>
+            <div>
+              <div className="label">For a timed test</div>
+              <div className="quote them">Skim. Hunt for keywords. Predict the answer. Finish the page.</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section>
+        <div className="wrap">
+          <div className="num">01 / What you are reading for</div>
+          <h2>Four things to find in any academic article.</h2>
+          <p className="lead">Every academic article can be opened with the same four questions. Hold them in your head while you read.</p>
+          <div className="grid2">
+            <div className="card"><h3>Position</h3><p>What does the author think is true? Look for the central claim and the words that show how strongly they hold it.</p></div>
+            <div className="card"><h3>Audience</h3><p>Who is the author writing for? Other researchers, teachers, policy makers, the general public? The audience shapes the choices the author makes.</p></div>
+            <div className="card"><h3>Purpose</h3><p>Why was this written? To report findings, argue a case, review evidence, or recommend a change? The purpose is rarely neutral.</p></div>
+            <div className="card"><h3>Conclusions</h3><p>What does the author want you to take away? Look in the abstract and the final section. Note the conclusions that are stated and the ones that are only implied.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="wrap">
+          <div className="num">02 / An active reading method</div>
+          <h2>Four steps you can use on every article.</h2>
+          <p className="lead">A method is only useful when it is the same one every time. Use these four steps on every article you read.</p>
+          <ol className="steps">
+            <li>
+              <h3>Preview before you read.</h3>
+              <p>Read the title, the abstract, the section headings, and the conclusion. You are building a map of where the argument is going so the body of the article is easier to follow.</p>
+            </li>
+            <li>
+              <h3>Annotate with purpose.</h3>
+              <p>Mark the central claim, the strongest piece of evidence, the points where the author hedges, and anything you do not understand. If you find yourself highlighting more than a tenth of a page, stop and choose.</p>
+            </li>
+            <li>
+              <h3>Parse the difficult sentences.</h3>
+              <p>Academic English packs many ideas into one noun phrase. When a sentence stops making sense, find the head noun first. Then look at how the modifiers around it change its meaning. Read the verb carefully for tense and hedging.</p>
+            </li>
+            <li>
+              <h3>Paraphrase each section.</h3>
+              <p>After each section, write one sentence in your own words. If you cannot, you have not understood it yet. Go back and find which sentence broke down.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section>
+        <div className="wrap">
+          <div className="num">03 / Working with difficult sentences</div>
+          <h2>Long noun phrases and hedging verbs.</h2>
+          <p className="lead">Academic English does most of its work at sentence level. Two patterns cause most of the comprehension trouble at B2 to C1: long noun phrases that stack modifiers around a head noun, and verbs that hedge a claim rather than assert it. Both can be learned.</p>
+          <Parser />
+        </div>
+      </section>
+
+      <section>
+        <div className="wrap">
+          <div className="num">04 / Vocabulary from context</div>
+          <h2>Read around the word, not under it.</h2>
+          <p className="lead">Stopping to look up every unfamiliar word slows your reading and rarely teaches the word. Strong readers use the sentence to estimate the meaning, then keep going. Try the three below.</p>
+          <Vocab />
+          <p className="small" style={{marginTop:18}}>If the same word blocks the meaning in several sentences and you cannot guess it from context, that is the right moment to look it up. Treat the dictionary as a precision tool, not a default move.</p>
+        </div>
+      </section>
+
+      <section>
+        <div className="wrap">
+          <div className="num">05 / Sort the strategies</div>
+          <h2>Which build understanding, and which are test-only?</h2>
+          <p className="lead">Place each strategy in the column it belongs to. When you have placed them all, you will see which were in the right column, and a short reason for each one.</p>
+          <Sort />
+        </div>
+      </section>
+
+      <section>
+        <div className="wrap">
+          <div className="num">06 / Reading on a screen</div>
+          <h2>Digital text has its own friction.</h2>
+          <p className="lead">Most academic reading happens on screen. Screens make some habits easier and some harder. The point is to keep the active habits and resist the passive ones.</p>
+          <ul className="bullets">
+            <li>Notifications off, one tab if you can. Reading is the only thing on the screen.</li>
+            <li>Annotate the PDF as you go. A comment with a question or a paraphrase counts as annotation. A highlight without a note rarely does.</li>
+            <li>Use the full screen view when you can, so the article is not surrounded by other windows.</li>
+            <li>Track where you are. Screens give you no spatial memory of the page, so it is easier to lose your place. Write a one-line summary at the end of each section as you go.</li>
+            <li>If your attention is gone, change something physical. Stand up, move the screen, take five minutes off. Pushing through tired reading is the slowest way to read.</li>
+          </ul>
+        </div>
+      </section>
+
+      <div className="wrap">
+        <div className="closing">
+          <div className="num">Where this leads</div>
+          <h2>Reading is the start of evaluating.</h2>
+          <p>The strategies above get you to a faithful reading of what an author is saying. The next layer, judging how much weight that reading deserves given the author, the audience, and the evidence, is a separate skill called source evaluation. It is the natural next step once you can read an article on its own terms.</p>
+          <div className="footnote">Carl Johan Odehammar, Jönköping University Pathway Programmes</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
